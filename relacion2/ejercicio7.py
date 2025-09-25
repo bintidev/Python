@@ -8,6 +8,7 @@ En otro caso Buenas noches'''
 def saludo(h,m):
     s = ""
 
+    # Pendiente de modificación para captar también los minutos
     if ((h < 7) and (m >= 0 and m <= 59)):
         s = "Buenas noches"
     if ((h < 12) and (m >= 0 and m <= 59)):
