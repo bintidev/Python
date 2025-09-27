@@ -8,12 +8,12 @@ En otro caso Buenas noches'''
 def saludo(h,m):
     s = ""
 
-    # Pendiente de modificación para captar también los minutos
-    if ((h < 7) and (m >= 0 and m <= 59)):
-        s = "Buenas noches"
-    if ((h < 12) and (m >= 0 and m <= 59)):
+    '''para que se muestre el mensaje "buenas noches" al introducir horas
+    de la madrugada, teniendo en cuenta, a la vez, los minutos, es necesario
+    especificar el rango de hora.'''
+    if ((h >= 7 and h < 12) and (m >= 0 and m <= 59)):
         s = "Buenos días"
-    elif ((h < 20) and (m >= 0 and m <= 59)):
+    elif ((h >= 12 and h < 20) and (m >= 0 and m <= 59)):
         s = "Buenas tardes"
     else:
         s = "Buenas noches"

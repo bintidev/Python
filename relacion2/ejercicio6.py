@@ -8,7 +8,7 @@ e. Nota entre 9 y 10 (sin llegar) es sobresaliente.
 f. Nota igual a 10 es matrícula de honor.
 g. Cualquier otro valor numérico fuera de este rango es un error.'''
 
-# cálculo dela nota teniendo en cuenta rangos
+# cálculo de la nota teniendo en cuenta rangos
 def calculoNotaFinal(n):
     nf = 0
 
