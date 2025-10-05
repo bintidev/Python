@@ -4,12 +4,15 @@
 n = int(input("Introduce un número: "))
 
 contador = 2
-esPrimo = False
+esPrimo = True
 
 # PENDIENTE DE ARREGLO APARA VALIDACION DEL 2 COMO NUM PRIMO
-while (n % contador != 0 and contador < n):
+while (contador < n):
+
+    if (n % contador == 0):
+        esPrimo = False
+
     contador += 1
-    esPrimo = True
 
 if (esPrimo):
     print ("El número {} es un número primo".format(n))
