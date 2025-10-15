@@ -3,7 +3,7 @@
 # (ya sea minúscula o mayúscula) de la operación a realizar. En caso de introducir
 # una letra incorrecta se mostrará un mensaje de error
 def opcionValida(opcion):
-    op = opcion.lower
+    op = opcion.lower()
     valida = True
 
     if (op != 'a' and op != 'b' and op != 'c' and op != 'd' and op != 'e'

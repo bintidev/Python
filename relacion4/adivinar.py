@@ -8,9 +8,7 @@ def adivinarNumero(intento, numero):
 
     if (numero > intento):
         pista = "El número que buscas es mayor ;D"
-    elif (numero < intento):
-        pista = "El número que buscas es menor :P"
     else:
-        pista = "Has adivinado. Yupiii !!!!"
+        pista = "El número que buscas es menor :P"
     
     return pista

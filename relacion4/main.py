@@ -1,19 +1,19 @@
 
-import random
-import impar, opcionValida, rombo, adivinar, numero
+import math, random, cmath
+import impar, opcionValida, rombo, adivinar, numerico
 
 # 1. Al arrancar debe mostrar un menú de opciones como el siguiente
 menu = ["MENÚ DE OPCIONES",
-        "\na) Mostrar un rombo",
-        "\nb) Adivinar un número",
-        "\nc) Resolver una ecuación de segundo grado",
-        "\nd) Tabla de números",
-        "\ne) Cálculo del número factorial de un número",
-        "\nf) Cálculo de un número de la sucesión de Fibonacci",
-        "\ng) Tabla de multiplicar",
-        "\nh) Salir"]
+        "a) Mostrar un rombo",
+        "b) Adivinar un número",
+        "c) Resolver una ecuación de segundo grado",
+        "d) Tabla de números",
+        "e) Cálculo del número factorial de un número",
+        "f) Cálculo de un número de la sucesión de Fibonacci",
+        "g) Tabla de multiplicar",
+        "h) Salir"]
 
-for i in menu:
+for i in range(len(menu)):
      print(menu[i], end="\n")
 
 opcion = input("Opcion: ")
@@ -27,31 +27,61 @@ while (opcionValida.opcionValida(opcion)):
     if (opcion == 'a'):
         base = int(input("Ingrese un número impar para el rombo: "))
 
-        while (numero.esNumero(base)):
+        while (math.isnan(base)):
             base = int(input("Error. Valor no númerico. Inténtelo de nevo: "))
 
         while (impar.esImpar(base) == False):
             base = int(input("Error. La base debe ser impar. Inténtelo de nuevo: "))
 
-            rombo.mostrarRombo(base)
+        rombo.mostrarRombo(base)
 
         opcion = input("Escoja otra opción: ")
     
     # adivinar número
     if (opcion == 'b'):
         aleatorio = random.randint(1, 100)
-        intento = int(input("Adivina el número en el que estoy pensando: "))
+        intento = int(input("Adivina el número en el que estoy pensando del 1 al 100: "))
 
-        while (numero.esNumero(intento) == False):
-            intento = int(input("Error. Valor no númerico. Inténtelo de nevo: "))
+        while (math.isnan(intento)):
+            intento = int(input("Error. Valor no númerico. Ingrese un número del 1 al 100: "))
 
         while (intento != aleatorio):
-                adivinar.adivinarNumero(intento, aleatorio)
-                intento = int(input("Adivina el número en el que estoy pensando: "))
+                print (adivinar.adivinarNumero(intento, aleatorio))
+                intento = int(input("Vuelve a intentarlo: "))
+        
+        print ("Has adivinado. Yupiii !!!!")
         
         opcion = input("Escoja otra opción: ")
 
     # resolver ecuacion de segundo grado
     if (opcion == 'c'):
-        a = int(input("Ingrese el número de líneas: "))
-        b = int(input("Ingrese el número de columnas: "))
+        a = int(input("Ingrese un valor para a: "))
+        b = int(input("Ingrese una valor para b: "))
+        c = int(input("Ingrese una valor para c: "))
+
+        if (a == 0):
+             
+            resultado1 = -(c / b)
+
+        elif (b == 0):
+
+            resultado1 = round(cmath.sqrt(-c / a), 2)
+            resultado2 = -round(cmath.sqrt(-c / a), 2)
+
+        elif (c == 0):
+
+            resultado2 = (-b) / a
+
+        else:
+
+            resultado1 = round((-b + cmath.sqrt(b ** 2 - (4 * a * c))) / (2 * a), 2)
+            resultado2 = round((-b - cmath.sqrt(b ** 2 - (4 * a * c))) / (2 * a), 2)
+
+        if (a == 0 or c == 0):
+
+            print ("Único resultado posible: {}".format(resultado1))
+        
+        else:
+
+            print ("Resultado 1: {} - Resultado 2: {}".format(resultado1, resultado2))
+
