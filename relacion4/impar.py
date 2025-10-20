@@ -1,9 +1,9 @@
 
 # devuelve si un numero es impar para la operación mostrar rombo
 def esImpar(numRombo):
-    esImp = True
+    n = numRombo
 
-    if (numRombo % 2 == 0):
-        esImp = False
+    while (n % 2 == 0):
+        n = int(input('Error. Ingrese un número impar: '))
 
-    return esImp
+    return n

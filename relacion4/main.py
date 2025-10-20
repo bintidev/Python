@@ -1,95 +1,73 @@
 
-import math, random, cmath
-import impar, opcionValida, rombo, adivinar, numerico
+import math, cmath
+import impar, aleatorio, menu, opcion, numerico
+import rombo, adivinar, ecuacion, tabla, factorial
 
-# 1. Al arrancar debe mostrar un menú de opciones como el siguiente
-menu = ["MENÚ DE OPCIONES",
-        "a) Mostrar un rombo",
-        "b) Adivinar un número",
-        "c) Resolver una ecuación de segundo grado",
-        "d) Tabla de números",
-        "e) Cálculo del número factorial de un número",
-        "f) Cálculo de un número de la sucesión de Fibonacci",
-        "g) Tabla de multiplicar",
-        "h) Salir"]
-
-for i in range(len(menu)):
-     print(menu[i], end="\n")
-
-opcion = input("Opcion: ").lower()
+menu.mostrarMenu()
+opcionUsuario = opcion.opcionValida()
 
 # 3. Si se ha indicado una opción correcta, se ejecuta según estas instrucciones que
 # se indican a continuación. Una vez finalizada la opción se espera a que se pulse
 # una tecla para continuar
-while (opcionValida.opcionValida(opcion)):
+
+while (opcionUsuario != 'h'):
 
     # mostrar rombo
-    if (opcion == 'a'):
-        base = int(input("Ingrese un número impar para el rombo: "))
+    if (opcionUsuario == 'a'):
 
-        while (math.isnan(base)):
-            base = int(input("Error. Valor no númerico. Inténtelo de nevo: "))
-
-        while (impar.esImpar(base) == False):
-            base = int(input("Error. La base debe ser impar. Inténtelo de nuevo: "))
-
+        base = numerico.esNumero("\nIngrese un número impar para el rombo: ")
         rombo.mostrarRombo(base)
 
-        opcion = input("Escoja otra opción: ")
-    
+        menu.mostrarMenu()
+        opcionUsuario = opcion.opcionValida()
+
     # adivinar número
-    elif (opcion == 'b'):
-        aleatorio = random.randint(1, 100)
-        intento = int(input("Adivina el número en el que estoy pensando del 1 al 100: "))
-
-        while (math.isnan(intento)):
-            intento = int(input("Error. Valor no númerico. Ingrese un número del 1 al 100: "))
-
-        while (intento != aleatorio):
-                print (adivinar.adivinarNumero(intento, aleatorio))
-                intento = int(input("Vuelve a intentarlo: "))
+    elif (opcionUsuario == 'b'):
         
-        print ("Has adivinado. Yupiii !!!!")
+        intento = input("\nAdivina el número en el que estoy pensando del 1 al 100: ")
+
+        copiaIntento = numerico.esNumero(intento)
+        print(adivinar.adivinarNumero(copiaIntento))
         
-        opcion = input("Escoja otra opción: ")
+        menu.mostrarMenu()
+        opcionUsuario = opcion.opcionValida()
 
     # resolver ecuacion de segundo grado
-    elif (opcion == 'c'):
-        a = int(input("Ingrese un valor para a: "))
-        b = int(input("Ingrese un valor para b: "))
-        c = int(input("Ingrese un valor para c: "))
-
-        if (a == 0) and (b == 0):
-
-            resultado1 = "Ecuación no válida"
-             
-        elif (a == 0):
-
-            resultado1 = -c / b
-
-        elif (b == 0):
-
-            resultado1 = round(cmath.sqrt(-c / a).real, 2)
-            resultado2 = -round(cmath.sqrt(-c / a).real, 2)
-
-        elif (c == 0):
-
-            resultado1 = 0
-            resultado2 = round(-b / a, 2)
-
-        else:
-
-            discriminante = cmath.sqrt(b ** 2 - (4 * a * c))
-            resultado1 = round(( -b + discriminante ).real / (2 * a), 2)
-            resultado2 = round(( -b - discriminante ).real / (2 * a), 2)
+    elif (opcionUsuario == 'c'):
         
-        if (resultado2 is None or resultado2 == 0):
+        a = input("\nIngrese un valor para a: ")
+        b = input("Ingrese un valor para b: ")
+        c = input("Ingrese un valor para c: ")
 
-            print ("Único resultado posible: {}".format(resultado1))
-
-        else:
-
-            print ("Resultado 1: {} - Resultado 2: {}".format(resultado1, resultado2))
+        copiaA = numerico.esNumero(a)
+        copiaB = numerico.esNumero(b)
+        copiaC = numerico.esNumero(c)
+        print(ecuacion.resolver(a, b, c))
         
-        opcion = input("Escoja otra opción: ")
+        menu.mostrarMenu()
+        opcionUsuario = opcion.opcionValida()
+
+    # tabla de números
+    elif (opcionUsuario == 'd'):
+
+        filas = input("\nIngrese un número de filas: ")
+        columnas = input("Ingrese un número de columnas: ")
+
+        copiaFilas = numerico.esNumero(filas)
+        copiaColumnas = numerico.esNumero(columnas)
+        tabla.tablaDenumeros(filas, columnas)
+
+        menu.mostrarMenu()
+        opcionUsuario = opcion.opcionValida()
+
+    # factorial de un número
+    elif (opcionUsuario == 'e'):
+
+        numero = input("Ingrese un número:")
+        print ("Factorial del número {}: {}".format(numero, factorial.factorialNumero(numero)))
+
+        menu.mostrarMenu()
+        opcionUsuario = opcion.opcionValida()
+
+print ("\nHas salido del programa")
 
