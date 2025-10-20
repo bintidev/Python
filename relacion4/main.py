@@ -16,7 +16,7 @@ menu = ["MENÚ DE OPCIONES",
 for i in range(len(menu)):
      print(menu[i], end="\n")
 
-opcion = input("Opcion: ")
+opcion = input("Opcion: ").lower()
 
 # 3. Si se ha indicado una opción correcta, se ejecuta según estas instrucciones que
 # se indican a continuación. Una vez finalizada la opción se espera a que se pulse
@@ -38,7 +38,7 @@ while (opcionValida.opcionValida(opcion)):
         opcion = input("Escoja otra opción: ")
     
     # adivinar número
-    if (opcion == 'b'):
+    elif (opcion == 'b'):
         aleatorio = random.randint(1, 100)
         intento = int(input("Adivina el número en el que estoy pensando del 1 al 100: "))
 
@@ -54,34 +54,42 @@ while (opcionValida.opcionValida(opcion)):
         opcion = input("Escoja otra opción: ")
 
     # resolver ecuacion de segundo grado
-    if (opcion == 'c'):
+    elif (opcion == 'c'):
         a = int(input("Ingrese un valor para a: "))
-        b = int(input("Ingrese una valor para b: "))
-        c = int(input("Ingrese una valor para c: "))
+        b = int(input("Ingrese un valor para b: "))
+        c = int(input("Ingrese un valor para c: "))
 
-        if (a == 0):
+        if (a == 0) and (b == 0):
+
+            resultado1 = "Ecuación no válida"
              
-            resultado1 = -(c / b)
+        elif (a == 0):
+
+            resultado1 = -c / b
 
         elif (b == 0):
 
-            resultado1 = round(cmath.sqrt(-c / a), 2)
-            resultado2 = -round(cmath.sqrt(-c / a), 2)
+            resultado1 = round(cmath.sqrt(-c / a).real, 2)
+            resultado2 = -round(cmath.sqrt(-c / a).real, 2)
 
         elif (c == 0):
 
-            resultado2 = (-b) / a
+            resultado1 = 0
+            resultado2 = round(-b / a, 2)
 
         else:
 
-            resultado1 = round((-b + cmath.sqrt(b ** 2 - (4 * a * c))) / (2 * a), 2)
-            resultado2 = round((-b - cmath.sqrt(b ** 2 - (4 * a * c))) / (2 * a), 2)
-
-        if (a == 0 or c == 0):
+            discriminante = cmath.sqrt(b ** 2 - (4 * a * c))
+            resultado1 = round(( -b + discriminante ).real / (2 * a), 2)
+            resultado2 = round(( -b - discriminante ).real / (2 * a), 2)
+        
+        if (resultado2 is None or resultado2 == 0):
 
             print ("Único resultado posible: {}".format(resultado1))
-        
+
         else:
 
             print ("Resultado 1: {} - Resultado 2: {}".format(resultado1, resultado2))
+        
+        opcion = input("Escoja otra opción: ")
 
