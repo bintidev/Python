@@ -5,16 +5,14 @@ import numerico
 calcular su factorial (este ejercicio ya está resuelto, prueba a hacer una solución
 recursiva).'''
 
-'''def factorialNumero(num):
+def factorialNumero(num):
 
-    numerico.esNumero(num)
+    if num == 1:
+        
+        f = 1
+    
+    else:
 
-    f = 1
-    i = num
+        f = num * factorialNumero(num - 1)
 
-    while (i > 1):
-
-        f *= 
-        i -= 1
-
-    return f'''
+    return f

@@ -6,12 +6,9 @@ los errores en el programa'''
 
 def esNumero (mensaje):
 
-    error = False
-
-    while False:
+    while True:
         try:
             num = int(input(mensaje))
-            error = False
             return num
         except:
-            num = int(input("Error. Introduce valor numérico: "))
+            print("Error. Introduce valor numérico válido")

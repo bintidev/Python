@@ -15,14 +15,12 @@ introduce el valor 7 se debe mostrar:
 
 def mostrarRombo(base):
 
-    copiaBase = numerico.esNumero(base)
-    impar.esImpar(copiaBase)
+    
 
-    for i in range(1, copiaBase + 1, 2):
-        espacios = (copiaBase - i) // 2
+    for i in range(1, base + 1, 2):
+        espacios = (base - i) // 2
         print (" " * espacios + "*" * i)
 
-        for j in range(i, 1):
-            espacios = (copiaBase - j) // 2
-            print (" " * espacios + "*" * j)
-            j -= 2
+        for j in range(base - 2, 0, -2):
+            espacios = (base - i) // 2
+            print (" " * espacios + "*" * i)
