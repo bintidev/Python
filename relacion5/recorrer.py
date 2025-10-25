@@ -9,7 +9,7 @@ def recorreLista(lista):
     # el ultimo elemento (obtenido del largo de la lista -1, automaticamente
     # excluido del rango)
     for i in range(len(lista)):
-        resultado = "- "
         resultado += str(lista[i]) + " " # formateo de salida
+    resultado += "\n"
     
     return resultado

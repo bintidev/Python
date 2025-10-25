@@ -1,6 +1,6 @@
 
-import menu, opcion, numerico
-import secuencia
+import menu, opcion, numerico, comprobacion
+import secuencia, palindromo, palindromo2
 
 menu.mostrarMenu()
 entrada = opcion.opcionValida()
@@ -32,6 +32,32 @@ while (entrada != 5):
             cadena = input("Ingrese otra cadena de texto (o déjela vacía para salir): ").lower()
 
         print(secuencia.mostrarSecuencia(secuenciaCadenas))
+
+    # palindromo
+    elif (entrada == 3):
+
+        texto = input("Ingrese texto: ")
+
+        # evitar distincion por mayusculas y minusculas
+        # y eliminar espacios antes de pasar el texto a la funcion
+        if(palindromo.esPalindromo(texto.lower().replace(" ", ""))):
+            print ("{} es untexto palíndromo".format(texto))
+        else:
+            print ("{} no es untexto palíndromo".format(texto))
+
+    # palindromo de otra
+    elif (entrada == 4):
+
+        texto1 = input("Ingrese primera cadena: ")
+        texto2 = input("Ingrese segunda cadena: ")
+
+        comprobar = comprobacion.distincionMinMay(texto1, texto2, input("¿Desea distinguir entre mayúsculas/minúsculas? [ S / N] "))
+
+        
+        if(palindromo2.palindromoDeOtro()):
+            print ("{} es untexto palíndromo".format(texto))
+        else:
+            print ("{} no es untexto palíndromo".format(texto))
 
     menu.mostrarMenu()
     entrada = opcion.opcionValida()
