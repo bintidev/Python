@@ -1,6 +1,6 @@
 
 import menu, opcion, numerico
-import secuenciaNumerica, secuenciaTextual
+import secuencia
 
 menu.mostrarMenu()
 entrada = opcion.opcionValida()
@@ -18,8 +18,9 @@ while (entrada != 5):
             secuenciaNumeros.append(numero)
             numero = numerico.esNumero("Ingrese otro número (o pulse 0 para salir): ")
 
-        print(secuenciaNumerica.mostrarSecuencia(secuenciaNumeros))
+        print(secuencia.mostrarSecuencia(secuenciaNumeros))
 
+    # secuencia de cadenas
     elif (entrada == 2):
 
         secuenciaCadenas = []
@@ -30,7 +31,7 @@ while (entrada != 5):
             secuenciaCadenas.append(cadena)
             cadena = input("Ingrese otra cadena de texto (o déjela vacía para salir): ").lower()
 
-        print(secuenciaTextual.mostrarSecuencia(secuenciaCadenas))
+        print(secuencia.mostrarSecuencia(secuenciaCadenas))
 
     menu.mostrarMenu()
     entrada = opcion.opcionValida()
