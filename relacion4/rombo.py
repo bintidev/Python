@@ -1,5 +1,5 @@
 
-import numerico, impar
+import impar
 
 '''Mostrar un rombo. Se debe recoer un número impar (debe asegurarse de que
 sea impar, en caso de no serlodebe descratarlo y pedirlo de nuevo). Una vez
@@ -15,12 +15,20 @@ introduce el valor 7 se debe mostrar:
 
 def mostrarRombo(base):
 
-    
+    # asegura que la base es impar antes de continuar
+    baseimpar = impar.esImpar(base)
+    mitad = baseimpar // 2 # division entera para determinar la linea del medio del rombo
 
-    for i in range(1, base + 1, 2):
-        espacios = (base - i) // 2
-        print (" " * espacios + "*" * i)
+    # bucle que dibuja la parte superior del rombo
+    for i in range(mitad + 1): # desde primera línea hasta línea central (ambas inluidas)
+        espacios = mitad - i # calcular espacios a la izquierda
+        asteriscos = 2 * i + 1
+        rombo += " " * espacios + "*" * asteriscos + "\n"
 
-        for j in range(base - 2, 0, -2):
-            espacios = (base - i) // 2
-            print (" " * espacios + "*" * i)
+    # bucle que dibuja la parte inferior del rombo
+    for i in range(mitad - 1, -1, -1): # desde línea siguiente a la central
+        espacios = mitad - i
+        asteriscos = 2 * i + 1
+        rombo += " " * espacios + "*" * asteriscos + "\n"
+
+    return rombo

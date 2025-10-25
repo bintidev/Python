@@ -5,11 +5,12 @@ una letra incorrecta se mostrará un mensaje de error'''
 
 def opcionValida():
 
+    # no distingue entre mayusculas y minusculas
     op = input("\nOpcion: ").lower()
     validas = set("abcdefgh")
 
     while (op not in validas):
 
-        op = input('Error. Ingrese una opción válida: ')
+        op = input('Error. Ingrese una opción válida: ').lower()
 
     return op
