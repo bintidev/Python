@@ -5,7 +5,8 @@
 def distincionMinMay(txt1, txt2, r):
 
     if (r.lower() == "n"):
-        return [txt1.upper(), txt2.upper()]
+        # elimina los espacios
+        return [txt1.lower().replace(" ", ""), txt2.lower().replace(" ", "")]
     
     else:
-        return [txt1, txt2]
+        return [txt1.replace(" ", ""), txt2.replace(" ", "")]
