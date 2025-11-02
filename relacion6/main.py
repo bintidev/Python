@@ -1,7 +1,7 @@
 
 
 import menu, opcion
-import ordenPorDefecto, ordenAlfabetico, nuevoContacto, modificar
+import ordenPorDefecto, ordenAlfabetico, nuevoContacto, modificar, busqueda, eliminar, borrar
 
 menu.mostrarMenu()
 entrada = opcion.opcionValida()
@@ -34,7 +34,9 @@ while (entrada != 'h'):
         nombre = input('Escriba el nombre del contacto a añadir: ')
         tel = input('Introduzca el numero del contacto a añadir: ')
 
-        listinTelefonico.update(nuevoContacto.aniadir(nombre, tel, listinTelefonico))
+        nuevoContacto.aniadir(nombre, tel, listinTelefonico)
+        # actualiza el listin tras añadir el nuevo contacto
+        listinTelefonico.update()
 
         print("\n¡Contacto añadido con éxito!")
 
@@ -43,15 +45,53 @@ while (entrada != 'h'):
 
         nombre = input('Escriba el nombre del contacto a modificar: ')
 
-        listinTelefonico.update(modificar.actualizarTelefono(nombre, listinTelefonico))
+        modificar.actualizarTelefono(nombre, listinTelefonico)
+        # actualiza el listin tras modificar/añadir el contacto
+        listinTelefonico.update()
 
         print("\n¡Contacto modificado/añadido con éxito!")
 
     # buscar teléfono
+    elif (entrada == 'e'):
 
+        telefono = input('Ingrese el número de teléfono a buscar: ')
 
+        encontrado = busqueda.porNumero(telefono, listinTelefonico)
+
+        if (encontrado != ''):
+            print("\nNombre de contacto: {}".format(encontrado))
+
+        else:
+            print("\n¡Ups! Parece que no existe ningún contacto con ese número")
+
+    # eliminar contacto
+    elif (entrada == 'f'):
+
+        nombre = input('Escriba el nombre del contacto a eliminar: ')
+
+        if(eliminar.eliminarContacto(nombre, listinTelefonico)):
+            # actualiza la lista si se ha podido borrar el contacto
+            listinTelefonico.update()
+            print("\n¡Contacto {} eliminado con éxito!".format(nombre))
+
+        else:
+            print("\n⚠ El contacto no existe. No se ha podido borrar el contacto")
+
+    # borrar listin
+    elif (entrada == 'g'):
+
+        print("\n⚠ ¡¡ATENCION!! Está a punto de borrar toda su lista de contactos")
+        confirmacion = input("\n¿Está seguro de querer proseguir con la operación? [ S / N ] ")
+        
+        if (borrar.borrarListin(confirmacion, listinTelefonico)):
+            listinTelefonico.update()
+            print("\n¡Se ha borrado la lista de contactos correctamente!")
+
+        else:
+            print("\n¡La operación ha sido cancelada!")
+        
 
     menu.mostrarMenu()
     entrada = opcion.opcionValida()
 
-print("\nPrograma terminado. Bye bye! \n")
+print("\n¡Hasta luego! \n")

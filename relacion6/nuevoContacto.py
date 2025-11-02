@@ -7,6 +7,3 @@ afirmativamente se actualiza.'''
 def aniadir(n, t, dicc):
     
     dicc[n] = t
-    lista = dicc
-
-    return lista

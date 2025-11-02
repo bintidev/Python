@@ -1,5 +1,5 @@
 
-# Indica si un contacto ya existe
+# Indica si un contacto existe
 
 def existeContacto(n, dicc):
 

@@ -16,5 +16,3 @@ def actualizarTelefono(n, dicc):
 
     else:
         dicc[n] = input('Ingrese el número de teléfono actualizado: ')
-
-    return dicc
