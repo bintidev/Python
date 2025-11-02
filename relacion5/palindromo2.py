@@ -9,10 +9,10 @@ def palindromoDeOtro(textos):
 
     if (textos[0] == textos[1]):
 
-        if (textos[0][::-1] != textos[1][::-1]):
+        if (textos[0][::-1] == textos[1][::-1]):
             palindromoOtro = True
 
-        else:
-            palindromoOtro = False
+    else:
+        palindromoOtro = False
     
     return palindromoOtro
