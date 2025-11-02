@@ -5,6 +5,8 @@ import recorrer
 
 def mostrarSecuencia(lista):
 
+    # lista[:] crea una copia de la lista pasada por parametros y la
+    # almacena en las variables indicadas
     ascendente = lista[:]
     descendente = lista[:]
 
