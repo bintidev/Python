@@ -51,13 +51,12 @@ while (entrada != 5):
         texto1 = input("Ingrese primera cadena: ")
         texto2 = input("Ingrese segunda cadena: ")
 
-        comprobar = comprobacion.distincionMinMay(texto1, texto2, input("¿Desea distinguir entre mayúsculas/minúsculas? [ S / N] "))
+        comprobar = comprobacion.distincionMinMay(texto1, texto2, input("¿Desea distinguir entre mayúsculas/minúsculas? [ S / N ] "))
 
-        
-        if(palindromo2.palindromoDeOtro()):
-            print ("{} es untexto palíndromo".format(texto))
+        if(palindromo2.palindromoDeOtro(comprobar)):
+            print ("{} es palíndromo de {}".format(texto1, texto2))
         else:
-            print ("{} no es untexto palíndromo".format(texto))
+            print ("{} no es palíndromo de {}".format(texto1, texto2))
 
     menu.mostrarMenu()
     entrada = opcion.opcionValida()

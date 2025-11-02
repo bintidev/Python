@@ -7,11 +7,11 @@ de derecha a izquierda. Por ejemplo, la palabra OSO es un palíndromo.'''
 
 def esPalindromo(txt):
 
-    esPld = True
+    esPld = False
     # recoge la cadena al revés
     txtInverso = txt[::-1]
 
-    if (txtInverso != txt):
-        esPld = False
+    if (txtInverso == txt):
+        esPld = True
     
     return esPld

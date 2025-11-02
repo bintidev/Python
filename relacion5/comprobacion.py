@@ -5,7 +5,7 @@
 def distincionMinMay(txt1, txt2, r):
 
     if (r.lower() == "n"):
-        return [txt1.upper(), txt2.upper()]
+        return [txt1.lower(), txt2.lower()]
     
     else:
         return [txt1, txt2]
