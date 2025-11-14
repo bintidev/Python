@@ -143,12 +143,12 @@ def masRepetida(palabra):
     letras = {}
 
     for i in range(len(palabra)):
-        letras[palabra[i]] = 0
+        letras[palabra[i].lower()] = 0
 
     for i in range(len(palabra)):
 
-        if palabra[i] in letras.keys():
-            letras[palabra[i]] += 1
+        if palabra[i].lower() in letras.keys():
+            letras[palabra[i].lower()] += 1
 
 
     for l, oc in letras.items():
