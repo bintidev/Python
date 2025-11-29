@@ -8,7 +8,7 @@ def mostrarMenu():
                 "a) Listado de contactos por orden alfabético",
                 "b) Añadir un nuevo contacto",
                 "c) Modificar un contacto",
-                "d) Buscar un número de teléfono",
+                "d) Buscar un nombre de contacto a partir de teléfono",
                 "e) Eliminar un contacto",
                 "f) Salir",
             ]
