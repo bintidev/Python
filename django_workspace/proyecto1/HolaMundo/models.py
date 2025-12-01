@@ -22,3 +22,14 @@ class Author (models.Model):
         max_length = 150,
         default = ''
     )
+
+    # añadimos este código para que en el administrador al acceder a los
+    # registros que contiene la tabla aparezca no Author object ID, sino que nos
+    # de más información del registro que hay dentro (nombre y apellido).
+
+    # con el método __str__, sobreescribimos la información por defecto. Indicamos
+    # ahí lo que queramos que nos retorne
+
+    # ojo, está dentro de la clase
+    def __str__(self):
+        return f'{self.name} {self.last_name}'
