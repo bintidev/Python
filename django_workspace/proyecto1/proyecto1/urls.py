@@ -23,6 +23,6 @@ urlpatterns = [
     # ruta, añadimos a la lista de url, la nuestra, con hola, como nombre de ruta, y nuestro
     # nombre de vista.
     # si ponemos path('', views.index), no haría falta poner en el navegador el directorio.
-    path('otramas/', views.home), # nueva vista
+    path('', views.home), # nueva vista
     path('admin/', admin.site.urls),
 ]
