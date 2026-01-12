@@ -64,13 +64,11 @@ class Material:
         for ids, mat in self.material.items():
             if isinstance(mat, Libro):
                 tipo = 'libro'
-                infoAdicional = f' Genero: {mat.getGenero()} - Número de páginas: {mat.getPaginas()} ]'
 
             else:
                 tipo = 'revista'
-                infoAdicional = f' Número de edición: {mat.getNumeroEdicion()} - Mes de publicación: {mat.getMesPublicacion()} ]'
 
-            resultado += f'[ Tipo: {tipo} - ID: {ids} - Titulo: {self.titulo} - Autor: {self.autor} - Año de publicación: {self.fecha_publicacion}' + infoAdicional
+            resultado += f'[ Tipo: {tipo} - ID: {ids} - Titulo: {self.titulo} - Autor: {self.autor} - Año de publicación: {self.fecha_publicacion}'
     
         return resultado
 
@@ -91,6 +89,11 @@ class Libro(Material):
     
     def getGenero(self):
         return self.genero
+    
+    def listarMaterial(self):
+        resultado = super().listarMateriales()
+        resultado += f'\nGenero: {self.getGenero()} - Número de páginas: {self.getPaginas()} ]'
+        return resultado
 
 ##########################################
 
@@ -109,6 +112,11 @@ class Revista(Material):
     
     def getMesPublicacion(self):
         return self.mes_publicacion
+    
+    def listarMaterial(self):
+        resultado = super().listarMateriales()
+        resultado += f'\nNúmero de edición: {self.getNumeroEdicion()} - Mes de publicación: {self.getMesPublicacion()} ]'
+        return resultado
 
 ###############################
 
@@ -175,6 +183,8 @@ def agregarMaterial():
             num_paginas = int(input('Número de páginas: '))
 
         libro = Libro(id, titulo, autor, publicacion, genero, num_paginas)
+
+        return libro
     else:
         num_edicion = input('Número de edición: ')
         mesesValidos = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
@@ -186,6 +196,8 @@ def agregarMaterial():
 
         revista = Revista(id, titulo, autor, publicacion, num_edicion, mes_publicacion)
 
+        return revista
+
 ###########################
 
 mostrarMenu()
@@ -195,11 +207,11 @@ while (entrada != 'f'):
 
     if (entrada == 'a'):
 
-        agregarMaterial()
+        material = agregarMaterial()
 
     elif (entrada == 'b'):
 
-        Material.listarMateriales()
+        print(material.listarMateriales())
 
     elif (entrada == 'c'):
 
