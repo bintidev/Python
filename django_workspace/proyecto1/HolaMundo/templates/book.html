@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%extends 'index.html'%}
+    {%block title%}<title>Libros</title>{%endblock title%}
+</head>
+
+<body class="container">
+
+    {%block content%}
+    <h1>Listado de libros</h1>
+    <table border="2" class="table table-striped">
+        <thead>
+            <th scope="col">Titulo</th>
+            <th scope="col">Codigo</th>
+            <th scope="col">Paginas</th>
+            <th scope="col">Editorial</th>
+            <th scope="col">Autor</th>
+        </thead>
+        <tbody>
+            {% for bo in books %}
+            <tr>
+                <td>{{ bo.title }} </td>
+                <td>{{ bo.cod }}</td>
+                <td>{{ bo.num_paginas }}</td>
+                <td>{{ bo.editorial }}</td>
+                <td>{% for au in bo.author.all %}
+                    {{ au }}
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {%endblock content%}
+
+</body>
+
+</html>

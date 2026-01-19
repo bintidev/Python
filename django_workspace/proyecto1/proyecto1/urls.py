@@ -24,5 +24,8 @@ urlpatterns = [
     # nombre de vista.
     # si ponemos path('', views.index), no haría falta poner en el navegador el directorio.
     path('', views.home), # nueva vista
+    path('authors/', views.author),
+    path('books/', views.book),
+    path('create-author/', views.create_author),
     path('admin/', admin.site.urls),
 ]
