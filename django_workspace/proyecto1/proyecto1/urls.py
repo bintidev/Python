@@ -27,5 +27,7 @@ urlpatterns = [
     path('authors/', views.author),
     path('books/', views.book),
     path('create-author/', views.create_author),
+    path ('update-author/<int:pk>', views.update_author),
+    path ('delete-author/<int:pk>', views.delete_author),
     path('admin/', admin.site.urls),
 ]

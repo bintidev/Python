@@ -5,11 +5,10 @@
     {%extends 'index.html'%}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {%block title%}<title>Create Author</title>{%endblock title%}
+    {%block title%}<title>Update author</title>{%endblock title%}
 </head>
 
 <body>
-
     {%block content%}
     <form action="" method="POST">
         {% csrf_token %}
@@ -17,7 +16,6 @@
         <button type="submit">Guardar</button>
     </form>
     {%endblock content%}
-
 </body>
 
 </html>

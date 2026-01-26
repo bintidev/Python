@@ -12,11 +12,38 @@
 
     {%block content%}
     <h1>Listado de autores</h1>
-    <ul>
-        {% for au in authors %}
-        <li>{{ au }}</li>
-        {% endfor %}
-    </ul>
+    <div>
+        <a class="btn btn-outline-primary mb-3" href="/create-author/">Registrar nuevo autor</a>
+    </div>
+    <table border="2" class="table table-striped">
+        <thead>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Nivel inglés</th>
+            <th scope="col">Acciones</th>
+        </thead>
+        <tbody>
+            {% for au in authors %}
+            <tr>
+                <td>{{ au.name }} </td>
+                <td>{{ au.last_name }}</td>
+                <td>{{ au.age }}</td>
+                <td>{{ au.phone_number }}</td>
+                <td>{{ au.mail }}</td>
+                <td>{{ au.nivel_ingles }}</td>
+                <td>
+                    <a class="btn btn-outline-warning" href="/update-author/{{au.id}}"><i
+                            class="bi bi-pencil-fill"></i></a>
+                    <a class="btn btn-outline-danger" href="/delete-author/{{au.id}}"><i
+                            class="bi bi-trash-fill"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {%endblock content%}
 
 </body>
