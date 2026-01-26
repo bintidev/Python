@@ -3,7 +3,7 @@ from django.http import HttpResponse # necesario para responder al cliente
 # con httpresponse se puede responder con texto plano o HTML
 from HolaMundo.models import Author;
 from HolaMundo.models import Book;
-from HolaMundo.forms import AutorForm;
+from HolaMundo.forms import AutorForm, BookForm;
 
 # Create your views here.
 
@@ -85,3 +85,41 @@ def delete_author (request, pk = None):
     #autor=Author.objects.get(pk=pk)
     #autor.delete()
     return redirect ('/authors/')
+
+def create_book(request):
+    if request.method == 'GET':
+        return render(request, 'create_book.html', {'book_form': BookForm})
+    
+    if request.method == 'POST':
+        book_form = BookForm(data = request.POST) #data es lo que le enviamos para que inserte
+        if book_form.is_valid(): #Valido la información que me envían para guardar el libro. Realmente
+        #la información está en book_form.
+            new_book = Book.objects.create(title = book_form.cleaned_data.get('title'), cod = book_form.cleaned_data.get('cod'))
+    #Hasta aquí habrá registrado mi libro. Ahora pasamos al campo relaciona.
+    #Ahora guardo la instancia que acabo de registrar, envíandole el id que quiero guardar
+    #el atributo set, lo tiene el campo implicado en la relación manytomany
+            new_book.author.set(book_form.cleaned_data.get('author'))
+            return redirect('/books/')
+    else:
+        return render(request, 'create_book.html',{'book_form': book_form}) #Le enviamos a la
+    #página de creación con los datos incluidos para que pueda comprobar qué dato está mal.
+
+def update_book(request, pk = None):
+    book = Book.objects.get(pk = pk)
+
+    if request.method == 'GET':
+        return render(request, 'update_book.html', {'book': book, 'book_form': BookForm})
+    
+    if request.method == 'POST':
+        book_form = BookForm(data = request.POST, instance = book) #data es lo que le enviamos para que inserte
+        if book_form.is_valid(): #Valido la información que me envían para guardar el libro. Realmente
+        #la información está en book_form.
+            new_book = Book.objects.create(title = book_form.cleaned_data.get('title'), cod = book_form.cleaned_data.get('cod'))
+    #Hasta aquí habrá registrado mi libro. Ahora pasamos al campo relaciona.
+    #Ahora guardo la instancia que acabo de registrar, envíandole el id que quiero guardar
+    #el atributo set, lo tiene el campo implicado en la relación manytomany
+            new_book.author.set(book_form.cleaned_data.get('author'))
+            return redirect('/books/')
+    else:
+        return render(request, 'update_book.html',{'book': book, 'book_form': book_form}) #Le enviamos a la
+    #página de creación con los datos incluidos para que pueda comprobar qué dato está mal.

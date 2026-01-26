@@ -12,6 +12,9 @@
 
     {%block content%}
     <h1>Listado de libros</h1>
+    <div>
+        <a class="btn btn-outline-primary mb-3" href="/create-book/">Registrar nuevo libro</a>
+    </div>
     <table border="2" class="table table-striped">
         <thead>
             <th scope="col">Titulo</th>
@@ -19,6 +22,7 @@
             <th scope="col">Paginas</th>
             <th scope="col">Editorial</th>
             <th scope="col">Autor</th>
+            <th scope="col">Acciones</th>
         </thead>
         <tbody>
             {% for bo in books %}
@@ -30,6 +34,10 @@
                 <td>{% for au in bo.author.all %}
                     {{ au }}
                     {% endfor %}
+                </td>
+                <td>
+                    <a class="btn btn-outline-warning" href="/update-book/{{bo.id}}"><i
+                            class="bi bi-pencil-fill"></i></a>
                 </td>
             </tr>
             {% endfor %}

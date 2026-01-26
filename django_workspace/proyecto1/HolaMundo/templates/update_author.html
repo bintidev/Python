@@ -10,10 +10,14 @@
 
 <body>
     {%block content%}
-    <form action="" method="POST">
+    <h1>Actualizar autor</h1>
+    <form action="" method="POST" class="bg bg-secondary-subtle p-3 rounded rounded-3">
         {% csrf_token %}
         {{autor_form}}
-        <button type="submit">Guardar</button>
+        <div class="mt-3">
+            <button class="btn btn-primary" type="submit">Guardar</button>
+            <a class="btn btn-secondary" href="/authors/">Cancelar</a>
+        </div>
     </form>
     {%endblock content%}
 </body>

@@ -5,19 +5,19 @@
     {%extends 'index.html'%}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {%block title%}<title>Create Author</title>{%endblock title%}
+    {%block title%}<title>Create Book</title>{%endblock title%}
 </head>
 
 <body>
 
     {%block content%}
-    <h1>Añadir autor</h1>
+    <h1>Crear libro</h1>
     <form action="" method="POST" class="bg bg-secondary-subtle p-3 rounded rounded-3">
         {% csrf_token %}
-        {{autor_form}}
+        {{book_form}}
         <div class="mt-3">
             <button class="btn btn-primary" type="submit">Guardar</button>
-            <a class="btn btn-secondary" href="/authors/">Cancelar</a>
+            <a class="btn btn-secondary" href="/books/">Cancelar</a>
         </div>
     </form>
     {%endblock content%}
